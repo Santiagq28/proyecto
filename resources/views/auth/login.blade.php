@@ -4,13 +4,10 @@
 @section('content')
 
 <div class="login-box">
-  
-  <!-- /.login-logo -->
-
   <div class="card">
     <div class="card-body login-card-body">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="../../index2.html">Iniciar Sesión</a>
         </div>
 
       <form method="POST" action="{{ route('login') }}">
@@ -44,50 +41,23 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
             </div>
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
+            <div class="col-6">
+                <a href="{{ route('register') }}" class="btn btn-success btn-block">{{ __('Register') }}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="mb-1">
+                    @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                    @endif
+                </p>
+            </div>
         </div>
       </form>
-
-      
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
-        </div>
-        <div class="col-6">
-            <a href="{{ route('register') }}" class="btn btn-success btn-block">{{ __('Register') }}</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p class="mb-1">
-                @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-                @endif
-            </p>
-        </div>
-    </div>
-    <!-- /.login-card-body -->
   </div>
 </div>
 
