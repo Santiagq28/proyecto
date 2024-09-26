@@ -3,11 +3,11 @@
 
 @section('content')
 
-<div class="login-box">
-  <div class="card">
-    <div class="card-body login-card-body">
-        <div class="login-logo">
-            <a href="../../index2.html">Iniciar Sesión</a>
+<div class="login-box" style="font-family:monospace;">
+  <div class="card" >
+    <div class="card-body login-card-body" style="background-color:black">
+        <div class="login-logo bold" >
+            <a href="../../index2.html" style="color:white">Iniciar Sesión</a>
         </div>
 
       <form method="POST" action="{{ route('login') }}">
@@ -42,15 +42,15 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
+                <button type="submit" class="btn btn-info btn-block">{{ __('Login') }}</button>
             </div>
             <div class="col-6">
-                <a href="{{ route('register') }}" class="btn btn-success btn-block">{{ __('Register') }}</a>
+                <a href="{{ route('register') }}" class="btn btn-dark btn-block">{{ __('Register') }}</a>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <p class="mb-1">
+                <p class="mb-1 text-white">
                     @if (Route::has('password.request'))
                         <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                     @endif
@@ -60,6 +60,13 @@
       </form>
   </div>
 </div>
+
+<style>
+  body{
+    background-image:url('https://wallpapers.com/images/high/dark-city-background-ympe22eapcw8su8e.webp');
+    background-size:cover;
+  }
+</style>
 
 
 

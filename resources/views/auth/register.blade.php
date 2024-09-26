@@ -4,14 +4,14 @@
 
 @section('content')
 
-<div class="login-box">
+<div class="login-box" style="font-family:monospace; background-color:black">
   
   <!-- /.login-logo -->
 
-  <div class="card">
-    <div class="card-body login-card-body">
+  <div class="card" style="background-color:black">
+    <div class="card-body login-card-body" style="background-color:black">
         <div class="login-logo">
-            <a href="../../index2.html">Registro</a>
+            <a href="../../index2.html" style="color:white">Registro</a>
         </div>
 
       <form method="POST" action="{{ route('register') }}">
@@ -71,19 +71,25 @@
 
     </div>
 
-    <div class="row m-2">
+    <div class="row m-2" style="background-color:black">
         <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
+            <button type="submit" class="btn btn-info btn-block">{{ __('Register') }}</button>
         </div>
         <div class="col-8">
             <a href="{{ route('login') }}"
-                    class="btn btn-success btn-block">{{ __('I already have an account') }}</a>
+                    class="btn btn-dark btn-block">{{ __('I already have an account') }}</a>
         </div>
         </div>
     </div>
   </div>
 </div>
 
+<style>
+  body{
+    background-image:url('https://wallpapers.com/images/high/dark-city-background-ympe22eapcw8su8e.webp');
+    background-size:cover;
+  }
+</style>
 
 
 @endsection
