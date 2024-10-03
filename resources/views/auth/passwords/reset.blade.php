@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.applogin')
 
 @section('content')
-<div class="container">
+<div class="container"  style="font-family:monospace;">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card" style="background-color:black">
+                <div class="card-header" style="text-align:center; font-size:25px; font-weight:900; color:white">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -62,4 +62,11 @@
         </div>
     </div>
 </div>
+<style>
+  body{
+    background-image:url('https://wallpapers.com/images/high/dark-city-background-ympe22eapcw8su8e.webp');
+    background-size:cover;
+    font-family:monospace;
+  }
+</style>
 @endsection

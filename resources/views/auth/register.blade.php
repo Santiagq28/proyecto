@@ -11,7 +11,7 @@
   <div class="card" style="background-color:black">
     <div class="card-body login-card-body" style="background-color:black">
         <div class="login-logo">
-            <a href="../../index2.html" style="color:white">Registro</a>
+            <h1 style="color:white">Registro</h1>
         </div>
 
       <form method="POST" action="{{ route('register') }}">

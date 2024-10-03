@@ -7,13 +7,13 @@
   <div class="card" >
     <div class="card-body login-card-body" style="background-color:black">
         <div class="login-logo bold" >
-            <a href="../../index2.html" style="color:white">Iniciar Sesión</a>
+            <h1 style="color:white">Iniciar Sesión</h1>
         </div>
 
       <form method="POST" action="{{ route('login') }}">
             @csrf
         <div class="input-group mb-3">
-        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo">
 
         @error('email')
             <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Contraseña">
 
         @error('password')
             <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
             <div class="col-12">
                 <p class="mb-1 text-white">
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                        <a style="text-decoration:none" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                     @endif
                 </p>
             </div>

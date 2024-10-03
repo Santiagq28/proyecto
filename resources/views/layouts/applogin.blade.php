@@ -30,3 +30,9 @@
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 </html>
+<style>
+  body{
+    background-image:url('https://wallpapers.com/images/high/dark-city-background-ympe22eapcw8su8e.webp');
+    background-size:cover;
+  }
+</style>
