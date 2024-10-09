@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="index3.html" class="brand-link">
+    <!--<a href="index3.html" class="brand-link">
       <img src="https://lauglobal.ufpso.edu.co/wp-content/uploads/2022/05/logoHorizontalUFPSO-1-1024x277.png" alt="AdminLTE Logo" class="brand-image">
       <span class="brand-text font-weight-light">Bienvenido</span>
-    </a>
+    </a>-->
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -18,7 +18,7 @@
                     <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="">
                 @endif
         </div>
-        <div class="info">
+        <div class="info" style="color: white">
           {{ Auth::user()->name }}
         </div>
       </div>
