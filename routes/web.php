@@ -12,7 +12,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('productos', ProductoController::class); 
+Route::resource('productos', ProductoController::class);
+
+Route::resource('categorias', CategoriaController::class);
+
+Route::get('cambioestadocategoria',[CategoriaController::class, 'cambioestadocategoria'])->name('cambioestadocategoria');
+
+Route::resource('galerias', GaleriaController::class);
+Route::get('cambioestadogaleria',[GaleriaController::class, 'cambioestadogaleria'])->name('cambioestadogaleria');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'home']);
+});
+
+
+
+/*Route::resource('productos', ProductoController::class); 
 
 Route::resource('categorias', CategoriaController::class);
 Route::get('cambioestadocategoria',[CategoriaController::class, 'cambioestadocategoria'])->name('cambioestadocategoria');
@@ -21,12 +36,6 @@ Route::resource('galerias', GaleriaController::class);
 Route::get('cambioestadogaleria',[CategoriaController::class, 'cambioestadogaleria'])->name('cambioestadogaleria');
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home',[HomeController::class, 'home']);
-    Route::get('/categorias',[CategoriaController::class, 'categorias']);
-    Route::get('/galerias',[GaleriaController::class, 'galerias']);
-    });
-/*
 Ruta Básica
     Route::get('/about', function () {
         return 'Acerca de nosotros';
