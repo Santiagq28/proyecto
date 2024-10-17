@@ -63,4 +63,11 @@ class GaleriaController extends Controller
     {
         //
     }
+
+    public function cambioestadogaleria(Request $request)
+	{
+		$departamento = Galeria::find($request->id);
+		$departamento->estado=$request->estado;
+		$departamento->save();
+	}
 }

@@ -63,4 +63,10 @@ class CategoriaController extends Controller
     {
         //
     }
+    public function cambioestadocategoria(Request $request)
+	{
+		$departamento = Categoria::find($request->id);
+		$departamento->estado=$request->estado;
+		$departamento->save();
+	}
 }

@@ -7,23 +7,43 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\GaleriaController;
 
+use App\Http\Controllers\PaisController;
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\CiudadController;
+use App\Http\Controllers\TipodocumentoController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'home']);
+});
+
 Route::resource('productos', ProductoController::class);
 
 Route::resource('categorias', CategoriaController::class);
-
 Route::get('cambioestadocategoria',[CategoriaController::class, 'cambioestadocategoria'])->name('cambioestadocategoria');
 
 Route::resource('galerias', GaleriaController::class);
 Route::get('cambioestadogaleria',[GaleriaController::class, 'cambioestadogaleria'])->name('cambioestadogaleria');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'home']);
-});
+
+
+Route::resource('paises', PaisController::class);
+Route::get('cambioestadopais', [PaisController::class, 'cambioestadopais'])->name('cambioestadopais');
+
+Route::resource('departamentos', DepartamentoController::class);
+Route::get('cambioestadodepartamento', [DepartamentoController::class, 'cambioestadodepartamento'])->name('cambioestadodepartamento');
+
+Route::resource('ciudads', CiudadController::class);
+Route::get('cambioestadociudad', [CiudadController::class, 'cambioestadociudad'])->name('cambioestadociudad');
+Route::get('getDepartamentos', [CiudadController::class, 'getDepartamentos'])->name('getDepartamentos');
+Route::get('getDepartamentosEdit', [CiudadController::class, 'getDepartamentosEdit'])->name('getDepartamentosEdit');
+
+Route::resource('tipodocumentos', TipodocumentoController::class);
+Route::get('cambioestadotipodocumento', [TipodocumentoController::class, 'cambioestadotipodocumento'])->name('cambioestadotipodocumento');
 
 
 
