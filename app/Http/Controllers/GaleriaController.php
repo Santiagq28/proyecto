@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Galeria;
+use Illuminate\Database\QueryException;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class GaleriaController extends Controller
 {
@@ -66,8 +69,21 @@ class GaleriaController extends Controller
 
     public function cambioestadogaleria(Request $request)
 	{
-		$departamento = Galeria::find($request->id);
-		$departamento->estado=$request->estado;
-		$departamento->save();
+		try {
+            $estado = $request->input('estado'); // 1 o 0
+            $id = $request->input('id'); // ID del elemento
+    
+            // Realiza la lógica para cambiar el estado (e.g., actualizar en la base de datos)
+            $galeria = Galeria::find($id);
+            if ($galeria) {
+                $galeria->estado = $estado;
+                $galeria->save();
+                return response()->json(['success' => true, 'message' => 'Estado actualizado correctamente']);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Elemento no encontrado']);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error al cambiar el estado', 'error' => $e->getMessage()]);
+        }
 	}
 }
