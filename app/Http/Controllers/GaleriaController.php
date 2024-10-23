@@ -24,7 +24,7 @@ class GaleriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('galerias.create');
     }
 
     /**
@@ -32,7 +32,8 @@ class GaleriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $galeria = Galeria::create($request->all());
+		return redirect()->route('galerias.index')->with('successMsg','El registro se guardó exitosamente');
     }
 
     /**
