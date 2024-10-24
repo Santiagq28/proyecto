@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoriaRequest;
 use App\Models\Categoria;
 use Illuminate\Database\QueryException;
 use Exception;
@@ -30,10 +31,10 @@ class CategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoriaRequest $request)
     {
         $categoria = Categoria::create($request->all());
-		return redirect()->route('categorias.index')->with('successMsg','El registro se guardó exitosamente');
+		return redirect()->route('categorias.index')->with('successMsg','La categoría se guardó exitosamente');
     }
 
     /**

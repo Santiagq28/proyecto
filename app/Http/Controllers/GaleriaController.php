@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\GaleriaRequest;
 use App\Models\Galeria;
+use App\Models\Categoria;
 use Illuminate\Database\QueryException;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class GaleriaController extends Controller
 {
@@ -24,16 +28,43 @@ class GaleriaController extends Controller
      */
     public function create()
     {
-        return view('galerias.create');
+        $categorias = Categoria::all(); // Obtén todas las categorías
+        return view('galerias.create', compact('categorias'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GaleriaRequest $request)
     {
         $galeria = Galeria::create($request->all());
-		return redirect()->route('galerias.index')->with('successMsg','El registro se guardó exitosamente');
+
+        $imagen = $request->file('imagen');
+        $slug = Str::slug($request->titulo); // Asegúrate de usar el campo correcto
+        $imagenname = "";
+
+        if (isset($imagen)) {
+            $currentDate = Carbon::now()->toDateString();
+            $imagenname = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $imagen->getClientOriginalExtension();
+
+            // Ruta donde se guardará la imagen
+            $uploadPath = 'uploads/galerias';
+
+            // Crear la carpeta si no existe
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+
+            // Mover la imagen a la carpeta creada
+            $imagen->move($uploadPath, $imagenname);
+        }
+
+        // Guardar el nombre de la imagen en la base de datos o en la galería
+        // $galeria->imagen = $imagenname; // Asegúrate de agregar esto si es necesario
+        // $galeria->save();
+
+        return redirect()->route('galerias.index')->with('successMsg', 'El registro se guardó exitosamente');
+
     }
 
     /**

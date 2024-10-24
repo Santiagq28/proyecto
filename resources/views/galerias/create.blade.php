@@ -17,7 +17,8 @@
 						<div class="card-header bg-secondary">
 							<h3>@yield('title')</h3>
 						</div>
-						<form method="POST" action="{{ route('galerias.store') }}">
+						<form method="POST" action="{{ route('galerias.store') }}" enctype="multipart/form-data">
+							
 							@csrf
 							<div class="card-body">
 								<div class="row">
@@ -25,16 +26,25 @@
 										<div class="form-group label-floating">
 											<label class="control-label">Titulo Galeria<strong style="color:red;">(*)</strong></label>
 											<input type="text" class="form-control" name="titulo" placeholder="Galeria título" autocomplete="off" value="{{ old('titulo') }}">
+											
 											<label class="control-label">Descripción<strong style="color:red;">(*)</strong></label>
 											<input type="text" class="form-control" name="descripcion" placeholder="Descripcción" autocomplete="off" value="{{ old('descripcion') }}">
+											
 											<label class="control-label">Imagen<strong style="color:red;">(*)</strong></label>
 											<input type="file" class="form-control" name="imagen" placeholder="Ingrese la imagen" autocomplete="off" value="{{ old('imagen') }}">
+											
 											<label class="control-label">Categoria<strong style="color:red;">(*)</strong></label>
+											<select name="categoria_id" class="form-control">
+												<option value="">Seleccione la Categoria</option>
+												@foreach($categorias as $categoria)
+													<option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+												@endforeach
+											</select>
 										</div>
 									</div>
 								</div>
 								<input type="hidden" class="form-control" name="estado" value="1">
-								<input type="hidden" class="form-control" name="registradopor" value="{{ Auth::user()->id }}">
+								<input type="hidden" class="form-control" name="registradoPor" value="{{ Auth::user()->id }}">
 							</div>
 							<div class="card-footer">
 								<div class="row">
