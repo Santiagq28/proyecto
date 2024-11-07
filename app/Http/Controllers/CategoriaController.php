@@ -48,25 +48,37 @@ class CategoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Categoria $categoria)
     {
-        //
+        return view('categorias.edit',compact('categoria'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoriaRequest $request, Categoria $categoria)
     {
-        //
+        $categoria->update($request->all());
+        return redirect()->route('categorias.index')->with('successMsg','La categoría se actualizó exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Categoria $categoria)
     {
-        //
+        try {
+            $categoria->delete();
+            return redirect()->route('categorias.index')->with('successMsg', 'El registro se eliminó exitosamente');
+        } catch (QueryException $e) {
+            // Capturar y manejar violaciones de restricción de clave foránea
+            Log::error('Error al eliminar el departamento: ' . $e->getMessage());
+            return redirect()->route('categorias.index')->withErrors('El registro que desea eliminar tiene información relacionada. Comuníquese con el Administrador');
+        } catch (Exception $e) {
+            // Capturar y manejar cualquier otra excepción
+            Log::error('Error inesperado al eliminar la categoria: ' . $e->getMessage());
+            return redirect()->route('categorias.index')->withErrors('Ocurrió un error inesperado al eliminar el registro. Comuníquese con el Administrador');
+        }
     }
     public function cambioestadocategoria(Request $request)
 	{

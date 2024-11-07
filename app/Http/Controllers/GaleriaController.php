@@ -78,25 +78,58 @@ class GaleriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Galeria $galeria)
     {
-        //
+        $categorias = Categoria::all();
+        return view('galerias.edit',compact('galeria','categorias'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(GaleriaRequest $request, Galeria $galeria)
     {
-        //
+        
+        $imagen = $request->file('imagen');
+        $slug = str::slug($request->id);
+        if (isset($imagen))
+        {
+            $currentDate = Carbon::now()->toDateString();
+            $imagenname = $slug.'-'.$currentDate.'-'. uniqid() .'.'. $imagen->getClientOriginalExtension();
+
+            if (!file_exists('uploads/galerias'))
+            {
+                mkdir('uploads/galerias',0777,true);
+            }
+            $imagen->move('uploads/galerias',$imagenname);
+        }else{
+            $imagenname = $galeria->imagen;
+        }
+        
+        $galeria->update(array_merge($request->except('imagen'), [
+				'imagen' => $imagenname
+		]));
+        return redirect()->route('galerias.index')->with('successMsg', 'El registro se guardó exitosamente');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Galeria $galeria)
     {
-        //
+        try {
+            $galeria->delete();
+            return redirect()->route('galerias.index')->with('successMsg', 'El registro se eliminó exitosamente');
+        } catch (QueryException $e) {
+            // Capturar y manejar violaciones de restricción de clave foránea
+            Log::error('Error al eliminar el departamento: ' . $e->getMessage());
+            return redirect()->route('galerias.index')->withErrors('El registro que desea eliminar tiene información relacionada. Comuníquese con el Administrador');
+        } catch (Exception $e) {
+            // Capturar y manejar cualquier otra excepción
+            Log::error('Error inesperado al eliminar la galeria: ' . $e->getMessage());
+            return redirect()->route('galerias.index')->withErrors('Ocurrió un error inesperado al eliminar el registro. Comuníquese con el Administrador');
+        }
     }
 
     public function cambioestadogaleria(Request $request)

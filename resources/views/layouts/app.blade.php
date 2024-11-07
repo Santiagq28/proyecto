@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/dist/css/select2.css')}}">
 
+    <link rel="stylesheet" href="{{asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css">
     @stack('styles')
     @stack('scripts')
@@ -117,4 +119,12 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="{{asset('backend/dist/js/table.js')}}"></script>
 <script src="{{asset('backend/dist/js/statuschange.js')}}"></script>
 
+
+<!-- Delete-Confirm -->
+<script src="{{asset('backend/dist/js/delete-confirm.js')}}"></script>
+
+<!-- Sweetalert2 -->
+<script src="{{asset('backend/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>
+ 
 </html>
