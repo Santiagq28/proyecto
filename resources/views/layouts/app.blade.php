@@ -37,14 +37,10 @@
     <link rel="stylesheet" href="{{asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
-
     <!-- Select2 -->
     <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/dist/css/select2.css')}}">
-
-    <link rel="stylesheet" href="{{asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css">
     @stack('styles')
     @stack('scripts')
@@ -92,7 +88,13 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<link rel="stylesheet" href="{{asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+<!-- Sweetalert2 -->
+<script src="{{asset('backend/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script> -->
+<!-- Delete-Confirm -->
+<script src="{{asset('backend/dist/js/delete-confirm.js')}}"></script>
+
 
 <!-- DataTables  & Plugins -->
 <script src="{{asset('backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -109,22 +111,12 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
 <!-- Select2 -->
-<script src="{{asset('backend/plugins/select2/js/select2.full.js')}}"></script>
-<!-- Selectors -->
-<script src="{{asset('backend/dist/js/selectors.js')}}"></script>
-
+<!-- <script src="{{asset('backend/plugins/select2/js/select2.full.js')}}"></script>
+<script src="{{asset('backend/dist/js/selectors.js')}}"></script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>
 <!-- Table -->
 <script src="{{asset('backend/dist/js/table.js')}}"></script>
 <script src="{{asset('backend/dist/js/statuschange.js')}}"></script>
 
-
-<!-- Delete-Confirm -->
-<script src="{{asset('backend/dist/js/delete-confirm.js')}}"></script>
-
-<!-- Sweetalert2 -->
-<script src="{{asset('backend/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>
- 
 </html>
