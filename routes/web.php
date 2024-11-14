@@ -11,6 +11,7 @@ use App\Http\Controllers\PaisController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\CiudadController;
 use App\Http\Controllers\TipodocumentoController;
+use App\Http\Controllers\WelcomeController;
 
 
 Route::get('/', function () {
