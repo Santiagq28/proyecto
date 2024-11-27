@@ -25,7 +25,7 @@
 									<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Nombre Categoria <strong style="color:red;">(*)</strong></label>
-											<input type="text" class="form-control" name="nombre" placeholder="Nombre de la categoria..." autocomplete="off" value="{{ old('nombre') }}">
+											<input type="text" class="form-control" name="nombre" placeholder="Nombre de la categoria..." autocomplete="off" value="{{ $categoria->nombre }}">
 										</div>
 									</div>
 								</div>

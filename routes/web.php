@@ -6,12 +6,14 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\GaleriaController;
+use App\Http\Controllers\DestinoController;
 
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\CiudadController;
 use App\Http\Controllers\TipodocumentoController;
 use App\Http\Controllers\WelcomeController;
+
 
 
 Route::get('/', function () {
@@ -46,6 +48,7 @@ Route::get('getDepartamentosEdit', [CiudadController::class, 'getDepartamentosEd
 Route::resource('tipodocumentos', TipodocumentoController::class);
 Route::get('cambioestadotipodocumento', [TipodocumentoController::class, 'cambioestadotipodocumento'])->name('cambioestadotipodocumento');
 
+Route::get('/', [DestinoController::class, 'index']);
 
 
 /*Route::resource('productos', ProductoController::class); 

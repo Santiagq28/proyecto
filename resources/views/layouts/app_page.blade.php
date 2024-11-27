@@ -38,7 +38,7 @@
 <body>
     @include('layouts.partial_page.topbar_page')
     @yield('content_page')
-    @include('layouts.partial_page.categoria_page')
+    @include('layouts.partial_page.categoria_page', ['categorias' => $categorias], ['galerias' => $galerias])
     @include('layouts.partial_page.footer_page')
 </body>
     <!-- JavaScript Libraries -->

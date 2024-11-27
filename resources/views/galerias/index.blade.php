@@ -40,7 +40,12 @@
                                         <td>{{ $galeria->categoria->id }}</td>
 										<td>{{ $galeria->titulo }}</td>
 										<td>{{ $galeria->descripcion }}</td>
-										<td>{{ $galeria->imagen }}</td>
+										<td>@if ($galeria->imagen!=null)
+												<img src="{{ asset('uploads/galerias/'.$galeria->imagen) }}" style="height: 70px; width: 70px" alt="">
+											@elseif ($galeria->imagen==null)
+												<label class="control-label">Imagen <strong style="color:red;">(*)</strong></label>
+											@endif
+										</td>
 										<td>
 											
 												<input data-type="galeria" data-id="{{$galeria->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 

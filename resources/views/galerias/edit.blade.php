@@ -26,7 +26,7 @@
 									<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Titulo Galeria<strong style="color:red;">(*)</strong></label>
-											<input type="text" class="form-control" name="titulo" placeholder="Galeria título" autocomplete="off" value="{{ old('titulo') }}">
+											<input type="text" class="form-control" name="titulo" placeholder="{{ $galeria->titulo }}" autocomplete="off" value="{{ $galeria->titulo }}">
 											
 											<label class="control-label">Descripción<strong style="color:red;">(*)</strong></label>
 											<input type="text" class="form-control" name="descripcion" placeholder="{{ $galeria->descripcion }}" autocomplete="off" value="{{ $galeria->descripcion }}">
@@ -38,6 +38,7 @@
 												<label class="control-label">Imagen <strong style="color:red;">(*)</strong></label>
 												<input type="file" class="form-control" name="imagen"  autocomplete="off" value="">
 											@endif
+											<br>
 											<label class="control-label">Categoria<strong style="color:red;">(*)</strong></label>
 											<select name="categoria_id" class="form-control">
 												<option value="">Seleccione la Categoria</option>
